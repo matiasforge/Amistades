@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Lista de Amistades</title>
+</head>
+<body>
+    <h1>Lista de Amistades</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Friend</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for friendship in friendships %}
+            <tr>
+                <td>{{ friendship.user }}</td>
+                <td>{{ friendship.friend }}</td>
+            </tr>
+        {% endfor %}
+            {% if user %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.nombre }}</td>
+                    <td>{{ user.apellido }}</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('add_user') }}">Agregar Usuario</a>
+    <a href="{{ url_for('add_friendship') }}">Agregar Amistad</a>
+</body>
+</html>
